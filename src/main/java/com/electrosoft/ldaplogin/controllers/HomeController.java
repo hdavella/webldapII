@@ -18,7 +18,7 @@ public class HomeController {
         return context.getAuthentication().getName();
     }
 
-    @GetMapping("/typeof")
+    @GetMapping("/usertypeof")
     public String method(Authentication authentication) {
         if (authentication instanceof AnonymousAuthenticationToken) {
             return "user is anonymous";
