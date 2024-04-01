@@ -38,6 +38,7 @@ public class HomeController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 //get username
         String username = auth.getName();
+        System.out.println(username);
 
 // concat list of authorities to single string seperated by comma
         String authorityString = auth
