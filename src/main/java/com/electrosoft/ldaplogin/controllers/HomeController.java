@@ -48,11 +48,13 @@ public class HomeController {
                 .collect(Collectors.joining(","));
 
 // check if the user have authority -roleA
-        String role = "role_A";
+        String role = "G_GRAFANA_COT_VIEWER";
         boolean isCurrentUserInRole = auth
                 .getAuthorities()
                 .stream()
-                .anyMatch(role::equals);
+                .anyMatch(element -> role.contains("G_GRAFANA_COT_VIEWER")); //role::equals
+        System.out.println("isCurrentUserInRole = " + isCurrentUserInRole);
+        //System.out.println(auth.getAuthorities().toString().contains(role));
 
         return auth;
     }
