@@ -36,25 +36,23 @@ public class HomeController {
     public Authentication getLoggedUserDetail() {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//get username
+
         String username = auth.getName();
         System.out.println(username);
 
-// concat list of authorities to single string seperated by comma
         String authorityString = auth
                 .getAuthorities()
                 .stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.joining(","));
 
-// check if the user have authority -roleA
         String role = "G_GRAFANA_COT_VIEWER";
         boolean isCurrentUserInRole = auth
                 .getAuthorities()
                 .stream()
-                .anyMatch(element -> role.contains("G_GRAFANA_COT_VIEWER")); //role::equals
+                .anyMatch(role::equals); //role::equals
         System.out.println("isCurrentUserInRole = " + isCurrentUserInRole);
-        //System.out.println(auth.getAuthorities().toString().contains(role));
+        System.out.println(auth.getAuthorities().toString().contains(role));
 
         return auth;
     }
