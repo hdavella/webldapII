@@ -46,13 +46,13 @@ public class HomeController {
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.joining(","));
 
-        String role = "G_GRAFANA_COT_VIEWER";
+        String authority = "G_GRAFANA_COT_VIEWER";
         boolean isCurrentUserInRole = auth
                 .getAuthorities()
                 .stream()
-                .anyMatch(role::equals); //role::equals
+                .anyMatch(authority::equals);
         System.out.println("isCurrentUserInRole = " + isCurrentUserInRole);
-        System.out.println(auth.getAuthorities().toString().contains(role));
+        System.out.println(auth.getAuthorities().toString().contains(authority));
 
         return auth;
     }
