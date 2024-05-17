@@ -24,7 +24,7 @@ public class MyAuthenticationSuccessHandler implements AuthenticationSuccessHand
         Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
         if (roles.contains("ROLE_ADMIN"))
         {
-            request.getSession(false).setMaxInactiveInterval(60);
+            request.getSession(false).setMaxInactiveInterval(30);
         }
         else
         {
