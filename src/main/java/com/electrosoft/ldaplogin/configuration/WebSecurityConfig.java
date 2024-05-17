@@ -13,8 +13,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-       http.cors().and().authorizeRequests().antMatchers("/hello").hasAnyAuthority("bla")
-            .anyRequest().fullyAuthenticated().and().httpBasic().and().csrf().disable().formLogin().successHandler(new MyAuthenticationSuccessHandler());
+       http.cors().and().authorizeRequests().antMatchers("/user").hasAnyAuthority("A COMUNICACIONES")
+            .anyRequest()
+            .fullyAuthenticated()
+            .and().httpBasic()
+            .and().csrf().disable().formLogin().successHandler(new MyAuthenticationSuccessHandler());
     }
 
     @Bean
@@ -23,7 +26,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         ActiveDirectoryLdapAuthenticationProvider activeDirectoryLdapAuthenticationProvider
                 = new ActiveDirectoryLdapAuthenticationProvider("grupobna.local", "ldap://172.21.45.70/");
 
-        activeDirectoryLdapAuthenticationProvider.setSearchFilter("mailNickname={1}");
+        activeDirectoryLdapAuthenticationProvider.setSearchFilter("mailNickname={1}"); //que increible, esto lo cambio todo
         activeDirectoryLdapAuthenticationProvider.setConvertSubErrorCodesToExceptions(true);
         activeDirectoryLdapAuthenticationProvider.setUseAuthenticationRequestCredentials(true);
         

@@ -38,20 +38,23 @@ public class HomeController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
         String username = auth.getName();
-        System.out.println(username);
+        System.out.println("El usuario es: " + username);
 
+        String authority = "A COMUNICACIONES,";
         String authorityString = auth
                 .getAuthorities()
                 .stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.joining(","));
 
-        String authority = "G_GRAFANA_COT_VIEWER";
+        boolean is = authorityString.contentEquals(authorityString);
+
         boolean isCurrentUserInRole = auth
                 .getAuthorities()
                 .stream()
                 .anyMatch(authority::equals);
         System.out.println("isCurrentUserInRole = " + isCurrentUserInRole);
+        System.out.println("is = " + is);
         System.out.println(auth.getAuthorities().toString().contains(authority));
 
         return auth;
