@@ -31,7 +31,7 @@ public class MyAuthenticationSuccessHandler implements AuthenticationSuccessHand
             request.getSession(false).setMaxInactiveInterval(120);
         }
         //Your login success url goes here, currently login success url="/"
-        response.sendRedirect(request.getContextPath());
+        response.sendRedirect("/user");//request.getContextPath()
     }
     
 }

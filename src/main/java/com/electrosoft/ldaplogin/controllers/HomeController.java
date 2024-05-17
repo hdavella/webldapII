@@ -56,6 +56,7 @@ public class HomeController {
         System.out.println("isCurrentUserInRole = " + isCurrentUserInRole);
         System.out.println("is = " + is);
         System.out.println(auth.getAuthorities().toString().contains(authority));
+        System.out.println("authorityString = " + authorityString);
 
         return auth;
     }
