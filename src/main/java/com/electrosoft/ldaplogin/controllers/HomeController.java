@@ -46,18 +46,18 @@ public class HomeController {
                 .stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.joining(","));
+        System.out.println("authorityString = " + authorityString);
+        System.out.println("A COMUNICACIONES,esta? = " + auth.getAuthorities().toString().contains(authority));
 
         boolean is = authorityString.contentEquals(authorityString);
+        System.out.println("is = " + is);
 
         boolean isCurrentUserInRole = auth
                 .getAuthorities()
                 .stream()
                 .anyMatch(authority::equals);
         System.out.println("isCurrentUserInRole = " + isCurrentUserInRole);
-        System.out.println("is = " + is);
-        System.out.println(auth.getAuthorities().toString().contains(authority));
-        System.out.println("authorityString = " + authorityString);
-
+        
         return auth;
     }
 }

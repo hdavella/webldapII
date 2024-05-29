@@ -24,7 +24,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public AuthenticationProvider activeDirectoryLdapAuthenticationProvider() {
 
         ActiveDirectoryLdapAuthenticationProvider activeDirectoryLdapAuthenticationProvider
-                = new ActiveDirectoryLdapAuthenticationProvider("grupobna.local", "ldap://172.21.45.70/");
+                = new ActiveDirectoryLdapAuthenticationProvider("grupobna.local", "ldap://columba/");
 
         activeDirectoryLdapAuthenticationProvider.setSearchFilter("mailNickname={1}"); //que increible, esto lo cambio todo
         activeDirectoryLdapAuthenticationProvider.setConvertSubErrorCodesToExceptions(true);
