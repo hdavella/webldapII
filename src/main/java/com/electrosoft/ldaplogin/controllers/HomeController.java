@@ -15,7 +15,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String method(@CurrentSecurityContext SecurityContext context) {
-        return context.getAuthentication().getName();
+        return context.getAuthentication().getDetails().toString();
     }
 
     @GetMapping("/usertypeof")
@@ -40,7 +40,7 @@ public class HomeController {
         String username = auth.getName();
         System.out.println("El usuario es: " + username);
 
-        String authority = "A COMUNICACIONES,";
+        String authority = "COMUNICACIONES";
         String authorityString = auth
                 .getAuthorities()
                 .stream()
@@ -49,7 +49,7 @@ public class HomeController {
         System.out.println("authorityString = " + authorityString);
         System.out.println("A COMUNICACIONES,esta? = " + auth.getAuthorities().toString().contains(authority));
 
-        boolean is = authorityString.contentEquals(authorityString);
+        boolean is = authorityString.contentEquals(authority);
         System.out.println("is = " + is);
 
         boolean isCurrentUserInRole = auth
